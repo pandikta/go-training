@@ -1,28 +1,18 @@
 package mobil
 
-import "fmt"
-
-type Mobil struct {
-	Ban   int
-	Pintu int
+type Car struct {
+	Tires [4]Tires
+	Doors [2]Doors
 }
 
-type Ban interface {
-	Tipe() string
+type Tires interface {
+	CanRolling() bool
 }
 
-type BanKaret struct {
-	Ban
-}
+func (c Car) ChangeTire(i int, tire Tires) {
+	if i >= 4 {
+		return
+	}
 
-func (bk BanKaret) Tipe() string {
-	return "Ban Karet"
-}
-
-func (m Mobil) Open() {
-	fmt.Println("Membuka pintu")
-}
-
-func (m Mobil) Knock() {
-	fmt.Println("Mengetuk")
+	c.Tires[i] = tire
 }
